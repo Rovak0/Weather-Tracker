@@ -1,0 +1,19 @@
+api key = df6aab2683a83bd5874180733d8604ed
+
+The html
+    Needs a section to hold cities
+    Needs a section to display Weather
+    Needs a field to enter data
+    The city holder needs to be buttons to switch to them with an event listener
+    Only the cities are held as data
+
+The CSS
+    Make it look good
+
+The JS
+    Needs to handle input fields 
+    Needs to handle generated buttons
+    Needs to handle a fetch to get city area data
+        Then needs to handle a fetch to get city weather data
+    Needs to display weather
+    Needs to store and display cities
