@@ -50,13 +50,13 @@ enterButton.addEventListener('click', function(){
     // .then();
     
     // const weatherUrl = `api.openweathermap.org/data/2.5/forecast?lat=${pos[0]}&lon=${pos[1]}&appid=${myKey}`;
-    const pos = getLatLon(geoUrl);
     
     // const weather = getWeather(`https://api.openweathermap.org/data/2.5/forecast?lat=39.7392364&lon=-104.984862&appid=df6aab2683a83bd5874180733d8604ed`);
     // console.log(weather);
     // console.log(weather);
-
     
+    
+    const pos = getLatLon(geoUrl);
 
 })
 
@@ -92,8 +92,11 @@ function getLatLon(url){
                     return response.json();
                 })
                 .then(function (data){
-                    console.log(data);
-                    return data;
+                    // console.log(data);
+                    // console.log(data.list);
+                    //data.list is the next 40 weather forecasts every 3 hours
+                    //i want noon each day
+                    
         })
             // return `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${myKey}`;
 })
