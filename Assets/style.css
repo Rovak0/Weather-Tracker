@@ -1,0 +1,9 @@
+/* The weather div id needs to have entries displayed in a row */
+    /* It will be an unordered list */
+#weather ul {
+    list-style: none;
+}
+#weather li {
+    display: inline-block;
+    margin-right: 10px; /* add spacing between items */
+}
