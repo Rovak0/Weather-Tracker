@@ -5,5 +5,9 @@
 }
 #weather li {
     display: inline-block;
-    margin-right: 10px; /* add spacing between items */
+    margin-right: 20px; /* add spacing between items */
+    border : 3px solid black;
+    width : 14%;
+    padding : 5px;
+    height : 25%;
 }

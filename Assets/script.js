@@ -112,14 +112,18 @@ function getWeather(url){
                     function tempConverter(kelvin) {
                         return Math.floor(((kelvin-273.15) * 1.8) + 32);
                     }
-                    for (day of returnWeather){
+                    //each card should say what day it is
+                    //I don't think there is a built in parser, and I don't want to import anything
+                    const dayArray = ["Today", "Tomorrow", "2 days from today","3 days from today","4 days from today","5 days from today",]
+                    for (day in returnWeather){
                         const weatherCard = //I want remp_min temp_max temp from main, weather.description
-                            `<div class weatherCard>
-                                <h4> Temperature : ${tempConverter(day.main.temp)} </h4>
-                                <h4> High : ${tempConverter(day.main.temp_max)} </h4>
-                                <h4> Low : ${tempConverter(day.main.temp_min)} </h4>
-                                <h4> Weather : ${day.weather.description} </h4>
-                            </div>`
+                            `<li class weatherCard>
+                                <h3> ${dayArray[day]} </h3>
+                                <h4> Temperature : ${tempConverter(returnWeather[day].main.temp)} </h4>
+                                <h4> High : ${tempConverter(returnWeather[day].main.temp_max)} </h4>
+                                <h4> Low : ${tempConverter(returnWeather[day].main.temp_min)} </h4>
+                                <h4> Weather : ${returnWeather[day].weather[0].description} </h4>
+                            </li>`
                         weatherListEl.append(weatherCard);
                     }
                     
