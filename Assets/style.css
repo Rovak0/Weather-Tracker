@@ -1,10 +1,16 @@
 /* The weather div id needs to have entries displayed in a row */
     /* It will be an unordered list */
+
+body {
+    background-color: lightblue;
+}
+
 #weather ul {
     list-style: none;
 }
 #weather li {
     display: inline-block;
+    background-color: white;
     margin-right: 20px; /* add spacing between items */
     border : 3px solid black;
     width : 14%;
@@ -14,7 +20,7 @@
 
 .cityCards li {
     display: inline-block;
-
+    background-color: white;
     border : 3px solid black;
     padding : 2px;
     margin : 3px;
