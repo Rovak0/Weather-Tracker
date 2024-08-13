@@ -1,4 +1,4 @@
-const cityEl = $('#cities');
+const cityEl = $('#cityList');
 const weatherEl = $('#weather');
 const cityEntryEl = $('#cityBox');
 const enterButton = document.querySelector('#enterButton');
@@ -18,10 +18,13 @@ async function enterFunction(){
             localStorage.setItem('cityList', JSON.stringify(cityList));
             //add the city immidietly to the html
             const cityCard = 
-            `<div class="city">
+            `<li class="city" id=${newCity}>
                 <h4>${newCity}</h4>
-            </div>`
+            </li>`
             cityEl.append(cityCard);
+            //put a call here to attach its event lister
+            document.querySelector(`#${newCity}`).addEventListener('click', oldCityCaller);
+
         }
     }
     else{
@@ -37,16 +40,16 @@ async function enterFunction(){
     
 }
 
-async function getWeather(term){ //funciton to turn a lat lon url into weather
-    let url = await term;
-    fetch(url)
-        .then(function (response){
-            return response.json();
-        })
-        .then(function (data){
-            console.log(data);
-        })
-}
+// async function getWeather(term){ //funciton to turn a lat lon url into weather
+//     let url = await term;
+//     fetch(url)
+//         .then(function (response){
+//             return response.json();
+//         })
+//         .then(function (data){
+//             console.log(data);
+//         })
+// }
 
 function getWeather(url){
     fetch(url)
@@ -135,7 +138,15 @@ function getWeather(url){
 
 
 
+//I need to go through each item in the city list and put an event listener onto it
+//old ones will be put on during the init
+function oldCityCaller(){
+    console.log(this.id);
+    //use the entry to fetch the lat and long
+    const geoUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${this.id}&appid=${myKey}`;
 
+    getWeather(geoUrl);
+}
 
 
 
@@ -144,13 +155,18 @@ function init(){ //the set up function
     if (localStorage.getItem("cityList")){ //if there are entries to load
         const cityList = JSON.parse(localStorage.getItem("cityList"));
         for (city of cityList){ //this adds the old cities to the html
-            const cityCard = `<div class="city">
+            const cityCard = `<li class="city" id="${city}">
                 <h4>${city}</h4>
-            </div>`
+            </li>`
             cityEl.append(cityCard);
+            //grab the new card by the id tag
+            document.querySelector(`#${city}`).addEventListener('click', oldCityCaller);
         }
     }
 }
+
+
+
 
 
 enterButton.addEventListener('click', enterFunction)
